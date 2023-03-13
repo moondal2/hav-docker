@@ -28,7 +28,7 @@ public class AskController {
 
 		
 
-		ModelAndView mv = new ModelAndView("/askList");
+		ModelAndView mv = new ModelAndView("askList.html");
 
 		List<AskDto> list = askService.selectAskList((currentPage - 1) * 10);
 		mv.addObject("list", list);

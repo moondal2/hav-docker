@@ -74,13 +74,13 @@ public class ReservationController {
 //예약 확인을 위한 정보 (이름, 연락처) 입력하는 페이지
 	@RequestMapping("/Hotel/reservationInfoWrite.do")
 	public String reservationInfoWrite() throws Exception {
-		return "/checkReservation";
+		return "CheckReservation.html";
 	}
 
 //입력 받은 정보를 reservationInfo(DTO)에서 조회, 리스트 반환
 	@RequestMapping(value="/Hotel/checkReservationInfo.do")
 	public ModelAndView checkReservationInfo(ReservationDto reservationDto) throws Exception {
-		ModelAndView mv = new ModelAndView("/CheckReservationDetail");
+		ModelAndView mv = new ModelAndView("CheckReservationDetail.html");
 
 		List<ReservationDto> list = reservationService.checkReservationInfo(reservationDto);
 		mv.addObject("list", list);
@@ -112,7 +112,7 @@ public class ReservationController {
 	@RequestMapping("/Hotel/openReservationInfo.do")
 	public ModelAndView CheckReservation(@RequestParam int checkIdx) throws Exception {
 
-		ModelAndView mv = new ModelAndView("/CheckReservation");
+		ModelAndView mv = new ModelAndView("CheckReservation.html");
 
 		List<ReservationDto> list = reservationService.CheckReservation(checkIdx);
 		mv.addObject("list", list);

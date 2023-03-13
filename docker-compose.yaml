@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  hav-mysql:
+    image: mysql:5.7
+    ports:
+      - 4406:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=hoteldb
+    volumes:
+      - /c/docker/hav_data/:/var/lib/mysql
+    restart: always
+
+  hav-springboot:
+    depends_on:
+     - hav-mysql
+    image: choimoonjeong/hav-docker-image:v1
+    ports:
+      - 8080:8080
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_SERVER=hav-mysql
+      - MYSQL_PORT=3306
+    restart: always

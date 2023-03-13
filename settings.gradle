@@ -5,4 +5,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'Hotel_Project_rev3'
+rootProject.name = 'hav-docker'
